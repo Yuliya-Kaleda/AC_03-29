@@ -16,8 +16,19 @@ public class ListMap {
      *   The value associated with the key.
      */
     public static void put(ArrayList<String> keys, ArrayList<Integer> values, String key, int value) {
-        // FIXME: Write this method!
-    }
+            if (keys.contains(key)) {
+                int index = keys.indexOf(key);
+                values.remove(index);
+                values.add(index, value);
+            }
+            else {
+                keys.add(key);
+                int keyIdx = keys.indexOf(key);
+                values.add(keyIdx, value);
+
+            }
+        }
+
 
     /**
      * Gets the value from the "map" associated with a key.
@@ -31,8 +42,16 @@ public class ListMap {
      *   The value associated with the key, or null if the key is not in the "map".
      */
     public static Integer get(ArrayList<String> keys, ArrayList<Integer> values, String key) {
-        // FIXME: Write this method!
-        return null;
+        if (keys.contains(key)) {
+            int valueIdx = keys.indexOf(key);
+            int value = values.get(valueIdx);
+            Integer result = new Integer(value);
+            return result;
+        }
+        else {
+            return null;
+        }
+
     }
 
     /**
@@ -47,7 +66,11 @@ public class ListMap {
      *   The value that was associated with the key, or null if the key was not in the "map".
      */
     public static Integer remove(ArrayList<String> keys, ArrayList<Integer> values, String key) {
-        // FIXME: Write this method!
+        if (keys.contains(key)) {
+            int keyIdx = keys.indexOf(key);
+            keys.remove(keyIdx);
+            values.remove(keyIdx);
+        }
         return null;
     }
 

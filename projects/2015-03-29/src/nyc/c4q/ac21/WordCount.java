@@ -20,7 +20,7 @@ public class WordCount {
         try {
             File file = new File(filename);
             Scanner scanner = new Scanner(file);
-            scanner.useDelimiter("[ .!?,:;-]");
+            scanner.useDelimiter("[ .!?,:; \n]");
 
             while (scanner.hasNext()) {
                 String word = scanner.next().trim().toLowerCase();
@@ -39,15 +39,24 @@ public class WordCount {
     }
 
     /**
-     * Counts the numer of times each word appears.
+     * Counts the number of times each word appears.
      * @param words
      *   A list of words.
      * @return
      *   A hash map from words to the number of times each appears.
      */
     public static HashMap<String, Integer> countWords(ArrayList<String> words) {
-        // FIXME: Write this method.
-        return null;
+        HashMap<String, Integer> result = new HashMap<String, Integer>();
+        for (String n : words) {
+            if (result.get(n) == null) {
+                result.put(n, 1);
+            }
+            else {
+                int value = result.get(n);
+                result.put(n, value +1);
+            }
+        }
+        return result;
     }
 
     /**
@@ -67,6 +76,7 @@ public class WordCount {
     public static void main(String[] args) {
         ArrayList<String> words = getWords("state of the union.txt");
         HashMap<String, Integer> counts = countWords(words);
+        System.out.println(counts);
         printCount(counts, "the");
         printCount(counts, "you");
         printCount(counts, "country");

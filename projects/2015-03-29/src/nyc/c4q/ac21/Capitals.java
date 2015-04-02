@@ -1,7 +1,7 @@
 package nyc.c4q.ac21;
 
 import java.util.HashMap;
-
+import java.util.Scanner;
 public class Capitals {
 
     /**
@@ -65,14 +65,20 @@ public class Capitals {
 
 
     public static void main(String[] args) {
-        // Write a program that prompts the user for the name of a state.
-        //
-        // If the user enters the name of a state, print out,
-        //   The capital of (state) is (capital).
-        //
-        // Otherwise, print out,
-        //   (name) is not a state!
+        Scanner in = new Scanner(System.in);
 
-        // FIXME: Write this method.
+        //prompt the user for the name of a state.
+        System.out.println("Enter a state: ");
+        String state = in.nextLine();
+
+        //the user enters the name of a state
+        if (getCapitals().get(state)!= null) {
+            System.out.println("The capital of " + state + " is " + getCapitals().get(state) + ".");
+        }
+        // invalid input
+        else {
+            System.out.println(state + " is not a state!");
+        }
+
     }
 }
